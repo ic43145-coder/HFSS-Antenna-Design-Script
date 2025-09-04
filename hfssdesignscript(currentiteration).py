@@ -59,7 +59,7 @@ oEditor.CreateBox([
 ])
 
 # -----------------------------------------------------
-# Ground Plane (sheet instead of solid)
+# Ground Plane (sheet)
 # -----------------------------------------------------
 oEditor.CreateRectangle([
     "NAME:RectangleParameters",
@@ -436,7 +436,7 @@ oModule.InsertSetup("HfssDriven",
     ]
 )
 
-# Sweep: use interpolating instead of fully discrete
+# Sweep
 oModule.InsertFrequencySweep("Setup1",
     [
         "NAME:Sweep",
@@ -445,10 +445,10 @@ oModule.InsertFrequencySweep("Setup1",
         "RangeStart:=", "2GHz",
         "RangeEnd:=", "4GHz",
         "RangeStep:=", "10MHz",
-        "Type:=", "Discrete",     # was "Discrete"
+        "Type:=", "Discrete",    
         "SaveFields:=", False,
         "SaveRadFields:=", False,
-        "InterpUseS:=", True,          # use S-params for interpolation
+        "InterpUseS:=", True,         
         "InterpUsePortImped:=", True,
         "InterpUsePropConst:=", True
     ]
@@ -459,7 +459,7 @@ oModule.InsertFrequencySweep("Setup1",
 # Run Simulation
 # -----------------------------------------------------
 print("Running all analysis setups...")
-oDesign.AnalyzeAll()   # <--- safer than Analyze("Setup1")
+oDesign.AnalyzeAll()   
 
 print("Simulation completed!")
 
@@ -494,3 +494,4 @@ print("S-parameters exported to:", csv_file)
 # -----------------------------------------------------
 oEditor.FitAll()
 print("Dual microstrip antenna geometry united with ground plane sheet, symmetric stepped taper, corrected miter cuts, and S-parameters exported.")
+
